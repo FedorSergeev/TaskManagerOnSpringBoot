@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="TaskTracker@localhost">
-  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.17">
+  <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.19">
     <root id="1">
       <ServerVersion>11.6</ServerVersion>
       <StartupTime>1597563790</StartupTime>
@@ -13,16 +13,16 @@
       <ObjectId>13060</ObjectId>
       <Comment>default administrative connection database</Comment>
       <Owner>Alex</Owner>
-      <IntrospectionStateNumber>1181</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1307</IntrospectionStateNumber>
       <Current>1</Current>
-      <Relations>sequence|table|16622|16624|1
-sequence|table|16614|16616|1
-sequence|table|16633|16635|1
-sequence|table|16641|16643|1
-sequence|table|16652|16654|1
+      <Relations>sequence|table|16652|16654|1
 sequence|table|16660|16662|1
 sequence|table|16671|16673|1
 sequence|table|16679|16681|1
+sequence|table|16614|16616|1
+sequence|table|16622|16624|1
+sequence|table|16633|16635|1
+sequence|table|16641|16643|1
 </Relations>
     </database>
     <database id="4" parent="1" name="school">
@@ -40,8 +40,8 @@ sequence|table|16774|16776|1
     <role id="6" parent="1" name="Alex">
       <ObjectId>10</ObjectId>
       <SuperRole>1</SuperRole>
-      <CreateRole>1</CreateRole>
       <CreateDb>1</CreateDb>
+      <CreateRole>1</CreateRole>
       <CanLogin>1</CanLogin>
       <Replication>1</Replication>
       <BypassRls>1</BypassRls>
@@ -86,7 +86,7 @@ sequence|table|16774|16776|1
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>Alex</Owner>
-      <IntrospectionStateNumber>1182</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1308</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <schema id="18" parent="3" name="tasktracker">
@@ -227,75 +227,66 @@ sequence|table|16774|16776|1
     </extension>
     <sequence id="36" parent="17" name="hibernate_sequence">
       <ObjectId>16758</ObjectId>
-      <StateNumber>852</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>852</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>bigint</DataType>
+      <DataType>bigint|0s</DataType>
     </sequence>
     <sequence id="37" parent="17" name="backlogs_id_seq">
       <ObjectId>16614</ObjectId>
-      <StateNumber>812</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>812</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="38" parent="17" name="issues_id_seq">
       <ObjectId>16622</ObjectId>
-      <StateNumber>813</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>813</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="39" parent="17" name="project_participants_id_seq">
       <ObjectId>16633</ObjectId>
-      <StateNumber>814</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>814</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="40" parent="17" name="projects_id_seq">
       <ObjectId>16641</ObjectId>
-      <StateNumber>815</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>815</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="41" parent="17" name="sprints_id_seq">
       <ObjectId>16652</ObjectId>
-      <StateNumber>816</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>816</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="42" parent="17" name="users_id_seq">
       <ObjectId>16660</ObjectId>
-      <StateNumber>817</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>817</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="43" parent="17" name="workflow_statuses_id_seq">
       <ObjectId>16671</ObjectId>
-      <StateNumber>818</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>818</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="44" parent="17" name="workflows_id_seq">
       <ObjectId>16679</ObjectId>
-      <StateNumber>819</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>819</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <table id="45" parent="17" name="backlogs">
       <ObjectId>16616</ObjectId>
@@ -305,7 +296,7 @@ sequence|table|16774|16776|1
     <table id="46" parent="17" name="issues">
       <ObjectId>16624</ObjectId>
       <Owner>Alex</Owner>
-      <StateNumber>1164</StateNumber>
+      <StateNumber>1296</StateNumber>
     </table>
     <table id="47" parent="17" name="project_participants">
       <ObjectId>16635</ObjectId>
@@ -339,27 +330,24 @@ sequence|table|16774|16776|1
     </table>
     <sequence id="53" parent="28" name="hibernate_sequence">
       <ObjectId>16789</ObjectId>
-      <StateNumber>927</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>927</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>bigint</DataType>
+      <DataType>bigint|0s</DataType>
     </sequence>
     <sequence id="54" parent="28" name="users_id_seq">
       <ObjectId>16762</ObjectId>
-      <StateNumber>907</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>907</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <sequence id="55" parent="28" name="users_id_seq1">
       <ObjectId>16774</ObjectId>
-      <StateNumber>915</StateNumber>
       <Owner>Alex</Owner>
+      <StateNumber>915</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
+      <DataType>integer|0s</DataType>
     </sequence>
     <table id="56" parent="28" name="projects">
       <ObjectId>16764</ObjectId>
@@ -473,39 +461,39 @@ sequence|table|16774|16776|1
       <StateNumber>813</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="73" parent="46" name="date_create">
-      <Position>10</Position>
-      <DataType>date|0s</DataType>
-      <StateNumber>813</StateNumber>
-      <TypeId>1082</TypeId>
-    </column>
-    <column id="74" parent="46" name="executor_id">
+    <column id="73" parent="46" name="executor_id">
       <Position>11</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>813</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="75" parent="46" name="reporter_id">
+    <column id="74" parent="46" name="reporter_id">
       <Position>12</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>813</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="76" parent="46" name="current_workflow">
+    <column id="75" parent="46" name="current_workflow">
       <Position>13</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>995</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="77" parent="46" name="work_flow_issue">
+    <column id="76" parent="46" name="work_flow_issue">
       <Position>14</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>1164</StateNumber>
       <TypeId>23</TypeId>
     </column>
+    <column id="77" parent="46" name="date_create">
+      <Position>15</Position>
+      <DataType>date|0s</DataType>
+      <StateNumber>1304</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
     <index id="78" parent="46" name="issues_pk">
       <ObjectId>16631</ObjectId>
-      <StateNumber>813</StateNumber>
+      <StateNumber>1251</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>

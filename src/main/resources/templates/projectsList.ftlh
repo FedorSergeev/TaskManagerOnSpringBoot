@@ -26,5 +26,6 @@
         </tr>
     </#list>
 </table>
+<a href="createProject">Back</a>
 </body>
 </html>

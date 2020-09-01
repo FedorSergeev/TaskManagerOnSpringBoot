@@ -1,7 +1,7 @@
 package com.project.entities.issue;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "issues")
@@ -17,11 +17,14 @@ public class Issue {
     @Column(name = "issue_type")
     private String issueType;
 
+    @Column(name = "sprint_id")
+    private Integer sprint;
+
     @Column(name = "parent_issue_id")
     private Integer parentIssue;
 
     @Column(name = "date_create")
-    private Date dataCreate;
+    private LocalDate dataCreate;
 
     @Column(name = "description")
     private String description;
@@ -32,7 +35,8 @@ public class Issue {
     @Column(name = "reporter_id")
     private Integer reporter;
 
-    @Enumerated(value = EnumType.ORDINAL)
+    @Column(name = "status_of_workflow")
+    @Enumerated(value = EnumType.STRING)
     private WorkFlowIssue workFlowIssue;
 
     @Column(name = "issue_priority")
@@ -46,15 +50,16 @@ public class Issue {
 
     }
 
-    public Issue(String title, String description, String issueType,
+    public Issue(String title, String description, String issueType, IssuePriority issuePriority,
                  Integer backlog,
                  Integer executor, Integer reporter) {
         this.title=title;
         this.description=description;
         this.issueType = issueType;
+        this.issuePriority = issuePriority;
         this.backlog = backlog;
         this.workFlowIssue = WorkFlowIssue.OPEN_ISSUE;
-        this.dataCreate = new Date();
+        this.dataCreate = LocalDate.now();
         this.executor=executor;
         this.reporter=reporter;
     }
@@ -83,11 +88,11 @@ public class Issue {
         this.parentIssue = parentIssue;
     }
 
-    public Date getDataCreate() {
+    public LocalDate getDataCreate() {
         return dataCreate;
     }
 
-    public void setDataCreate(Date dataCreate) {
+    public void setDataCreate(LocalDate dataCreate) {
         this.dataCreate = dataCreate;
     }
 
@@ -146,4 +151,40 @@ public class Issue {
     public void setIssueType(String issueType) {
         this.issueType = issueType;
     }
+
+    public Integer getSprint() {
+        return sprint;
+    }
+
+    public void setSprint(Integer sprint) {
+        this.sprint = sprint;
+    }
+
+    public enum WorkFlowIssue {
+        OPEN_ISSUE("Open issue"),
+        INPROGRESS_ISSUE("In progress issue"),
+        REVIEW_ISSUE("Review issue"),
+        TEST_ISSUE("Test issue"),
+        RESOLVED_ISSUE("Resolved issue"),
+        REOPENED_ISSUE("ReOpened Issue"),
+        CLOSE_ISSUE("Close Issue");
+
+        String title;
+
+        WorkFlowIssue(String title){
+            this.title = title;
+        }
+
+        WorkFlowIssue() {
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+    }
+
 }

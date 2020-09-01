@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Список задач в проете</title>
+    <style>
+        .layer1 {
+            float: right;
+            margin-right: 520px;
+        }
+    </style>
 </head>
 <body>
+<div class="layer1">
+    <h2>Список пользователей</h2>
+    <#list users as user>
+        <div>
+            <span>${user.id!"none"}</span>
+            <span>${user.firstName!"none"}</span>
+            <span>${user.lastName!"none"}</span>
+        </div>
+    </#list>
+</div>
 <h1>Project info</h1>
 <table>
     <tr>
@@ -37,13 +53,19 @@
     </tr>
 </table>
 <a href="/project/${id}/projectInfo">Back</a>
-<h2>Список задач</h2>
+<div class="layer1">
+<h2>Список задач в бэклоге</h2>
 <table>
     <tr>
         <th>ID</th>
         <th>Title</th>
         <th>Issue type</th>
         <th>Workflow</th>
+        <th>Priority</th>
+        <th>Executor</th>
+        <th>Reporter</th>
+        <th>Data create</th>
+        <th>Выберите родительскую задачу и спринт</th>
     </tr>
     <#list issues as issue>
         <tr>
@@ -51,8 +73,73 @@
             <td>${issue.title!"none"}</td>
             <td>${issue.issueType!"none"}</td>
             <td>${issue.workFlowIssue!"none"}</td>
+            <td>${issue.issuePriority!"none"}</td>
+            <td>${issue.executor!"none"}</td>
+            <td>${issue.reporter!"none"}</td>
+            <td>${issue.dataCreate!"none"}</td>
+            <td>
+                <form method="post" action="/project/${id}/issueListInProject/moveToSprint/issue/${issue.id}">
+                    <input type="text" list="parentIssue" name="parentIssue">
+                    <datalist id="parentIssue">
+                        <#list issues as issue>
+                        <option>
+                                ${issue.title}
+                        </option>
+                        </#list>
+                    </datalist>
+                    <input type="text" list="sprintInProject" name="sprintInProject">
+                    <datalist id="sprintInProject">
+                        <#list sprints as sprint>
+                            <option>
+                                ${sprint.title}
+                            </option>
+                        </#list>
+                    </datalist>
+                    <button type="submit">Move to sprint</button>
+                </form>
+            </td>
         </tr>
     </#list>
 </table>
+</div>
+<div>
+    <h1>Фильтры</h1>
+    <p>Выберите приоритет задачи</p>
+    <div>
+    <form method="post" action="/project/${id}/issueListInProject/priorityFilter">
+        <input type="text" list="issuePriority" name="issuePriority">
+        <datalist id="issuePriority">
+            <option value="LOW">LOW</option>
+            <option value="MIDDLE">MIDDLE</option>
+            <option value="HIGH">HIGH</option>
+        </datalist>
+        <button type="submit">Сортировать по приоритету</button>
+    </form>
+    </div>
+    <div>
+    <form method="post" action="/project/${id}/issueListInProject/dateFilter">
+        <input type="date" name="date"><br>
+        <button type="submit">Сортировать по дате</button>
+    </form>
+    </div>
+    <div>
+    <form method="post" action="/project/${id}/issueListInProject/titleFilter">
+        <input type="text" name="title"><br>
+        <button type="submit">Сортировать по названию</button>
+    </form>
+    </div>
+    <div>
+    <form method="post" action="/project/${id}/issueListInProject/executorFilter">
+        <input type="text" name="executor"><br>
+        <button type="submit">Сортировать по исполнителю</button>
+    </form>
+    </div>
+    <div>
+    <form method="post" action="/project/${id}/issueListInProject/reporterFilter">
+        <input type="text" name="reporter"><br>
+        <button type="submit">Сортировать по репортеру</button>
+    </form>
+    </div>
+</div>
 </body>
 </html>
